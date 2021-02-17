@@ -75,8 +75,11 @@ async fn add_user_agent(user_agent: web::Json<user_agent::UserAgent>) -> impl Re
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
+    let port = std::env::var("PORT").expect("PORT Environment Variable not set");
+    let mut bind_to = "127.0.0.1:".to_owned();
+    bind_to.push_str(port.as_str());
     HttpServer::new(|| App::new().service(index).service(add_user_agent))
-        .bind("127.0.0.1:8080")?
+        .bind(bind_to)?
         .run()
         .await
 }
