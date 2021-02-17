@@ -350,7 +350,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "am_you_unique"
+name = "am-you-unique"
 version = "0.1.0"
 dependencies = [
  "actix-ratelimit",
